@@ -6,9 +6,12 @@
 
 `https://htmlpreview.github.io/?`
 
-把下面这个链接，拖到浏览器书签栏，可以省去手动复制粘贴网址的操作。
+把下面这段代码保存为浏览器书签（HTMLPreview），可以省去手动复制粘贴网址的操作。
+```
+javascript:void(open('https://htmlpreview.github.io/?'+location.href))
+```
 
-<a href="javascript:void(open('https://htmlpreview.github.io/?'+location.href))">HTMLPreview</a>
+---
 
 ## 米塞斯《自由与繁荣的国度》第一章第 11 节：
 
