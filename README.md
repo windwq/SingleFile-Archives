@@ -6,11 +6,9 @@
 
 `https://htmlpreview.github.io/?`
 
-例如：<br>
+把下面这个链接，拖到浏览器书签栏，可以省去手动复制粘贴网址的操作。
 
-原网址： `https://htmlpreview.github.io/?https://github.com/windwq/SingleFile-Archives/blob/main/这一篇，终结了无数篇 (2024-03-29T02-10-50.430Z).html`<br>
-
-添加后：<https://htmlpreview.github.io/?https://github.com/windwq/SingleFile-Archives/blob/main/%E8%BF%99%E4%B8%80%E7%AF%87%EF%BC%8C%E7%BB%88%E7%BB%93%E4%BA%86%E6%97%A0%E6%95%B0%E7%AF%87%20(2024-03-29T02-10-50.430Z).html>
+<a href="javascript:void(open('https://htmlpreview.github.io/?'+location.href))">HTMLPreview</a>
 
 ## 米塞斯《自由与繁荣的国度》第一章第 11 节：
 
