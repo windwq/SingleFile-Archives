@@ -1,0 +1,224 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=OneNote.File>
+<meta name=Generator content="Microsoft OneNote 15">
+<link id=Main-File rel=Main-File href=网络视频管理的一种方法youtube.htm>
+<link rel=File-List href="网络视频管理的一种方法youtube.files/filelist.xml">
+</head>
+
+<body lang=zh-CN style='font-family:微软雅黑;font-size:11.0pt'>
+
+<div style='direction:ltr;border-width:100%'>
+
+<div style='direction:ltr;margin-top:0in;margin-left:0in;width:7.6041in'>
+
+<div style='direction:ltr;margin-top:0in;margin-left:0in;width:.5826in'>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:20.0pt'>&nbsp;</p>
+
+</div>
+
+<div style='direction:ltr;margin-top:.0437in;margin-left:0in;width:1.5881in'>
+
+<p style='margin:0in;font-size:10.0pt;color:#767676'><span style='font-family:
+Calibri'>2024</span><span style='font-family:微软雅黑'>年</span><span
+style='font-family:Calibri'>4</span><span style='font-family:微软雅黑'>月</span><span
+style='font-family:Calibri'>21</span><span style='font-family:微软雅黑'>日</span></p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:#767676'>6:56</p>
+
+</div>
+
+<div style='direction:ltr;margin-top:.4784in;margin-left:0in;width:7.6041in'>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><span style='font-weight:
+bold'>网络视频管理的一种方法youtube</span></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><a
+href="https://www.zhihu.com/people/gashero"><span lang=zh-CN>gashero</span></a><span
+lang=en-US> </span><span lang=zh-CN>2023 年度新知答主</span></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>发布于 2024-02-28 14:44・IP
+属地北京</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p><cite style='margin:0in;font-size:9.0pt;color:#595959'><span
+style='font-family:宋体'>来自</span><span style='font-family:Calibri'> &lt;</span><a
+href="https://zhuanlan.zhihu.com/p/684362655"><span style='font-family:Calibri'>https://zhuanlan.zhihu.com/p/684362655</span></a><span
+style='font-family:Calibri'>&gt; </span></cite></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>过去几年，在youtube上下载了几千个视频。期间也不断的发现有些视频的消失，平均会有大约5%的视频会被删除，某些类别甚至超过20%。这就使得大家有了下载保存视频的需求。但下载的这些视频如何有效管理是个难题。我在近期设计了一套网络下载视频管理的方法，相信能给大家一些启示。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><span style='font-weight:
+bold'>需求</span></p>
+
+<ol type=1 style='direction:ltr;unicode-bidi:embed;margin-top:0in;margin-bottom:
+ 0in;font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:normal'>
+ <li value=1 style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:
+     normal;font-family:微软雅黑;font-size:11.0pt'>通过文件名进行简单的检索，所以文件名必须包含必要的几个重要信息</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>建立类似数据库的方式，供检索</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>避免重复下载</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>大规模检索的性能要有保证</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>有能力通过保存的文件名反向解析出视频URL</span></li>
+</ol>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><span style='font-weight:
+bold'>youtube的视频ID</span></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>youtube的视频ID是一个11位字符组成的字符串。其字符取值范围是[A-Za-z0-9-_]。网上可查的资料认为这是一种base64的变体。相对base64的变化如下：</p>
+
+<ol type=1 style='direction:ltr;unicode-bidi:embed;margin-top:0in;margin-bottom:
+ 0in;font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:normal'>
+ <li value=1 style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:
+     normal;font-family:微软雅黑;font-size:11.0pt'>base64中的两个符号被修改为适合出现在URL中，即base64中的
+     &quot;+/&quot; 变为了 &quot;-_&quot;</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>base64末尾补齐的&quot;=&quot;被去除了</span></li>
+</ol>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>由于无论是youtube视频ID中的符号还是base64的符号，如果放入文件名都会存在兼容性问题。最终我决定不用他们的方案，而是将视频ID转换为16进制。视频ID的值域空间比uint64略大，所以可以将其转换成16位16进制数字。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>如下是将youtube视频ID转换为16进制数字的函数，基于Python：</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>import re<br>
+import base64<br>
+RE_YOUTUBE_URL_LIST=(<br>
+<span style='mso-spacerun:yes'>       
+</span>re.compile(r'https:\/\/www.youtube.com\/watch\?v=([A-Za-z0-9\-_]{11})'),<br>
+<span style='mso-spacerun:yes'>        </span>re.compile(r'https:\/\/www.youtube.com\/shorts\/([A-Za-z0-9\-_]{11})'),<br>
+<span style='mso-spacerun:yes'>        </span>)</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>def
+parse_video_id(url):<br>
+<span style='mso-spacerun:yes'>   
+</span>&quot;&quot;&quot;根据输入URL获得几种不同格式的VIDEO_ID<br>
+<span style='mso-spacerun:yes'>    </span>&quot;&quot;&quot;<br>
+<span style='mso-spacerun:yes'>    </span>for regex in RE_YOUTUBE_URL_LIST:<br>
+<span style='mso-spacerun:yes'>        </span>mo=regex.search(url)<br>
+<span style='mso-spacerun:yes'>        </span>if mo:<br>
+<span style='mso-spacerun:yes'>           
+</span>ytid=mo.groups()[0]<br>
+<span style='mso-spacerun:yes'>            </span>break<br>
+<span style='mso-spacerun:yes'>    </span>else:<br>
+<span style='mso-spacerun:yes'>        </span>return<br>
+<span style='mso-spacerun:yes'>   
+</span>yt2=ytid.replace('-','/').replace('_','+')+'='<br>
+<span style='mso-spacerun:yes'>   
+</span>longstrid=base64.b64decode(yt2)<br>
+<span style='mso-spacerun:yes'>   
+</span>longid=struct.unpack('L',longstrid)[0]<br>
+<span style='mso-spacerun:yes'>    </span>hexid='%016x'%longid<br>
+<span style='mso-spacerun:yes'>    </span>return ytid,longstrid,longid,hexid</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>函数外开头用两个正则表达式来尝试匹配youtube
+URL的两种格式，并提取出视频ID。随后yt2变量是负责将两种符号进行映射，以及末尾补足base64所需的&quot;=&quot;。longstrid是使用base64解析出的8字节二进制的视频ID格式。longid是从8字节二进制的ID转换为uint64类型的ID。hexid是16位16进制的ID。最后一起返回。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>用于到文件名中的就是hexid。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><span style='font-weight:
+bold'>文件名规则与索引库</span></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>我当前使用的文件名规则，和一个例子如下：</p>
+
+<p style='margin:0in;margin-left:.375in;font-family:微软雅黑;font-size:11.0pt'>&lt;频道名&gt;_&lt;视频标题&gt;_&lt;16进制视频ID&gt;_&lt;分辨率&gt;.mp4</p>
+
+<p style='margin:0in;margin-left:.375in;font-family:微软雅黑;font-size:11.0pt'>XXX_HowToMakeSomeThing_yt1122334455667788_720p.mp4</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>通过这样的文件名，就可以方便的存储管理和建立索引库。其中视频索引我加了&quot;yt&quot;前缀表示来源是youtube，因为以后打算支持更多视频网站的。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>索引库就是扫描所有文件名，建立起视频ID到文件名的映射。当输入新的视频URL时，可以在索引库中搜索，如有匹配则提示该视频已经下载过。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>具体的索引库包含有3种来源：</p>
+
+<ol type=1 style='direction:ltr;unicode-bidi:embed;margin-top:0in;margin-bottom:
+ 0in;font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:normal'>
+ <li value=1 style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:
+     normal;font-family:微软雅黑;font-size:11.0pt'>当前下载目录，通过在脚本中搜索几个当前下载目录，将所有符合如上文件名规则的都记录到索引库，我的方案里当前下载目录是有几个简单分类的，比如tech和leisure，每个目录如果发现不符合文件名规则的都会报错以提示文件名错误</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>临时打包目录，一些已经经过简单整理的目录，文件名列表导出到一个文本文件中，导入索引库时只需要从这个txt文件中挨个解析文件名中的视频ID即可，速度非常快，临时打包目录本身可能放在移动硬盘或其他电脑里</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>长期备份包，我的另一种基于光盘的备份机制，一个光盘里的所有文件都会按文件名，大小，sha1sum三个字段来整理</span></li>
+</ol>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>如上的后两种索引来源，是从两种不同格式的文本文件里载入文件名中的视频ID，视频文件可以不在当前的电脑里。这种方式使得当前的电脑无需庞大的存储空间就足以管理大量视频。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>后两种索引来源的目录需要确保其是只读的，即后续不能对这两种目录作文件的增加和删除。否则会影响索引库的使用。一定要作增减的话，需要同步更新索引库。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><span style='font-weight:
+bold'>应用脚本</span></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>应用脚本也是基于Python写的。工作就是按如上规则载入索引库，对输入的视频URL来分析是否已经下载过。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>工作方式有命令行单次和交互式命令行两种。命令行单次是将URL作为参数输入，交互式命令行是用input()函数，每次读入一个URL并响应，持续工作。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>对于一个新的视频的应用流程：</p>
+
+<ol type=1 style='direction:ltr;unicode-bidi:embed;margin-top:0in;margin-bottom:
+ 0in;font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:normal'>
+ <li value=1 style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt;font-weight:normal;font-style:
+     normal;font-family:微软雅黑;font-size:11.0pt'>将URL输入到应用脚本，检索该文件是否已下载，已下载的就跳过</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>对未下载的视频，脚本会显示出hexid</span></li>
+ <li style='margin-top:0;margin-bottom:0;vertical-align:middle'><span
+     style='font-family:微软雅黑;font-size:11.0pt'>下载视频，重命名已下载的文件，按如上标准格式，并放入当前下载目录</span></li>
+</ol>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>每隔一段时间，比如1-2个月，可能下载了几百个视频，就将这些视频做成一个临时打包目录。每隔几个月，下载的视频占据了大量空间的时候，再去备份到光盘等。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'><span style='font-weight:
+bold'>下一步</span></p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>最初规划的功能里，大部分都已经实现了，还没实现的一个功能是从文件名反向转换到视频URL，这个功能至今也没用上，也就没写。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>另一个重点是打算给bilibili也支持进去。</p>
+
+<p style='margin:0in;font-family:微软雅黑;font-size:11.0pt'>&nbsp;</p>
+
+<p><cite style='margin:0in;font-size:9.0pt;color:#595959'><span
+style='font-family:宋体'>来自</span><span style='font-family:Calibri'> &lt;</span><a
+href="https://zhuanlan.zhihu.com/p/684362655"><span style='font-family:Calibri'>https://zhuanlan.zhihu.com/p/684362655</span></a><span
+style='font-family:Calibri'>&gt; </span></cite></p>
+
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<p style='margin:0in'>&nbsp;</p>
+
+<p style='text-align:left;margin:0in;font-family:Arial;font-size:9pt;
+color:#969696;direction:ltr'>已使用 OneNote 创建。</p>
+
+</div>
+
+</body>
+
+</html>
